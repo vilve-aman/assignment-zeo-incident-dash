@@ -8,6 +8,7 @@ import Select from '@/components/Select';
 import Input from '@/components/Input';
 import Pagination from '@/components/Pagination';
 import { api } from '../lib/api';
+import { useDebounce } from '../lib/hooks';
 import { Status } from '../lib/types';
 
 const ITEMS_PER_PAGE = 10;
@@ -24,6 +25,8 @@ export default function IncidentsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
 
+  const debouncedSearch = useDebounce(searchQuery, 500);
+
   const fetchIncidents = async () => {
     setLoading(true);
     try {
@@ -37,8 +40,8 @@ export default function IncidentsPage() {
         filters._and.status = [selectedStatus];
       }
 
-      if (searchQuery) {
-        filters._fuzzy.title = searchQuery;
+      if (debouncedSearch) {
+        filters._fuzzy.title = debouncedSearch;
       }
 
       const response = await api.listIncidents({
@@ -64,7 +67,7 @@ export default function IncidentsPage() {
 
   useEffect(() => {
     fetchIncidents();
-  }, [currentPage, selectedStatus, searchQuery]);
+  }, [currentPage, selectedStatus, debouncedSearch]);
 
   const handleFilterChange = () => {
     setCurrentPage(1);
