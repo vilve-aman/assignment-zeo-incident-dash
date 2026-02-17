@@ -1,0 +1,42 @@
+[
+    {
+        "title": "Login Failure",
+        "service": "Auth",
+        "severity": "SEV1",
+        "status": "OPEN",
+        "owner": "jason@team",
+        "summary": "Users are unable to log in to the application. Authentication service is returning 500 errors."
+    },
+    {
+        "title": "Payment Delay",
+        "service": "Payments",
+        "severity": "SEV1",
+        "status": "IN_PROGRESS",
+        "owner": "amy@team",
+        "summary": "Payment processing is experiencing delays. Transactions are taking longer than usual to complete."
+    },
+    {
+        "title": "API Timeout",
+        "service": "Backend",
+        "severity": "SEV2",
+        "status": "RESOLVED",
+        "owner": "dev@team",
+        "summary": "API requests to the backend service were timing out, causing disruptions for users."
+    },
+    {
+        "title": "UI Bug on Dashboard",
+        "service": "Frontend",
+        "severity": "SEV3",
+        "status": "OPEN",
+        "owner": "ops@team",
+        "summary": "Dashboard is displaying incorrect data in the charts section. Visual rendering issue."
+    },
+    {
+        "title": "Database Issue",
+        "service": "Database",
+        "severity": "SEV_1",
+        "status": "OPEN",
+        "owner": "ops@team",
+        "summary": "Database connection pool is exhausted. Application is unable to establish new connections."
+    }
+]
